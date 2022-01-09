@@ -66,7 +66,7 @@ app.use('/admin',adminRouter)
 app.use('/package',packages)
 app.use('/user',user)
 
-app.listen(4000, () =>
+app.listen(process.env.PORT || 4000, () =>
 {
     console.log('Express Server is running at port no 4000');
 });
