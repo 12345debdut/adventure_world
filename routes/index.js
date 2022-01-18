@@ -7,8 +7,6 @@ const Package=require('../models/pakageinfo')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  req.session.admin = true
-  req.session.authenticated=true
   Package.find({}).limit(3).then(result=>{
     if(result.length!==0)
     {
