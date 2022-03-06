@@ -5,9 +5,6 @@ const path = require('path');
 const session=require('express-session')
 const indexRouter = require('./routes/index');
 const authRouter=require('./routes/auth')
-const adminRouter=require('./routes/admin')
-const packages=require('./routes/packages')
-const user=require('./routes/user')
 const MONGODB_ATLAS_URL = "mongodb+srv://rimadas1234:Rimadas1234@cluster0.0m2g4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 require('dotenv').config()
 // const mongoose = require('./dbconnect');
@@ -47,24 +44,11 @@ app.use(session({
 
 
 app.use('/',express.static(path.join(__dirname, 'public')));
-app.use('/admin',express.static(path.join(__dirname, 'public')));
 app.use('/auth',express.static(path.join(__dirname, 'public')));
-app.use('/user',express.static(path.join(__dirname, 'public')));
-app.use('/package',express.static(path.join(__dirname, 'public')));
-app.use('/package/search',express.static(path.join(__dirname, 'public')));
-app.use('/admin/bookings/:id',express.static(path.join(__dirname, 'public')));
-app.use('/package/all/packages',express.static(path.join(__dirname, 'public')));
-app.use('/package/:id',express.static(path.join(__dirname, 'public')));
-app.use('/admin/search',express.static(path.join(__dirname, 'public')));
-app.use('/admin/search/tid',express.static(path.join(__dirname, 'public')));
-
 
 
 app.use('/', indexRouter);
 app.use('/auth',authRouter)
-app.use('/admin',adminRouter)
-app.use('/package',packages)
-app.use('/user',user)
 
 app.listen(process.env.PORT || 4000, () =>
 {
